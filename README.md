@@ -1,4 +1,4 @@
-#**Traffic Sign Recognition** 
+# **Traffic Sign Recognition** 
 
 **Build a Traffic Sign Recognition Project**
 
@@ -27,14 +27,14 @@ The goals / steps of this project are the following:
 [image8]: ./examples/probability.png "Probabilities"
 
 ## Rubric Points
-###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
+### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
 
 ---
-###Writeup / README
+### Writeup / README
 
 My Python project notebook is located here [project code](https://github.com/duvitech/CarND-Traffic-Sign-Classifier-Project.git/Traffic_Sign_Classifier.ipynb)
 
-###Data Set Summary & Exploration
+### Data Set Summary & Exploration
 
 Using traffic sign images found in the [German Traffic Sign Dataset](http://benchmark.ini.rub.de/?section=gtsrb&subsection=dataset).  
 I loaded training, validation and test images for training my neural network.
@@ -48,7 +48,7 @@ signs data set:
 * The shape of a traffic sign image is (32, 32, 3)
 * The number of unique classes/labels in the data set is 43
 
-####2. Exploratory visualization of the dataset.
+#### 2. Exploratory visualization of the dataset.
 
 After loading the datasets I provided visual exploration of the data in the form of 
 displaying an original image from each class:
@@ -61,7 +61,7 @@ of each dataset depicting the number of images in each class.
 
 ![alt text][image2]
 
-###Design and Test a Model Architecture
+### Design and Test a Model Architecture
 
 As a first step, I decided to convert the images to grayscale because ...
 
