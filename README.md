@@ -148,7 +148,7 @@ Here are the results of the prediction:
 |:-----------------------------:|:---------------------------------------------:| 
 | Bumpy Road     		        | Bumpy Road  									| 
 | Road Work    			        | Road Work 									|
-| Dangerous Curve To The Right  | Dangerous Curve To The Right					|
+| Slippery road                 | Wild Animal Crossing					|
 | 30 km/h                       | 30 km/h                   					|
 | Yield					        | Yield											|
 | Turn Right Ahead		        | Turn Right Ahead								|
@@ -156,7 +156,7 @@ Here are the results of the prediction:
 | 100 km/h			            | 100 km/h      				    			|
 
 
-The model was able to correctly guess 5 of the 5 traffic signs, which gives an accuracy of 100%. This compares favorably to the accuracy on the test set of 94%
+The model was able to correctly guess 5 of the 5 traffic signs, which gives an accuracy of 87.5%. This compares less than favorably to the accuracy on the test set of 96.1%
 
 ![alt text][image7] 
 
