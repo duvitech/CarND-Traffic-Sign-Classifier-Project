@@ -20,8 +20,11 @@ The goals / steps of this project are the following:
 [image1]: ./examples/orig_samples.png "Visualization"
 [image2]: ./examples/histograms.png "Dataset Histograms"
 [image3]: ./examples/grayscale.png "Grayscale"
-[image4]: ./examples/traffic_signs.png "Downloaded Traffic Signs"
-[image5]: ./examples/predictions.png "Network Predictions"
+[image4]: ./examples/augmentation.png "Imaging Functions"
+[image5]: ./examples/augmented_result.png "Augmented Data Sample"
+[image6]: ./examples/traffic_signs.png "Downloaded Traffic Signs"
+[image7]: ./examples/predictions.png "Network Predictions"
+[image7]: ./examples/probability.png "Probabilities"
 
 ## Rubric Points
 ###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
@@ -52,6 +55,7 @@ displaying an original image from each class:
 
 ![alt text][image1]
 
+
 I furthered my understanging of the dataset by adding distribution histograms
 of each dataset depicting the number of images in each class.
 
@@ -61,16 +65,22 @@ of each dataset depicting the number of images in each class.
 
 As a first step, I decided to convert the images to grayscale because ...
 
-Here is an example of a traffic sign image after grayscaling.
+Here is a visualization of a sample set of a traffic signs after grayscaling.
 
 ![alt text][image3]
 
-As a last step, I normalized the image data because ...
+As a last step, I normalized the image data because and created functions for augmenting and enhancing the images for better results.
 
-I decided to generate additional data because ... 
+![alt text][image4]
 
-The difference between the original data set and the augmented data set is the following ... 
+The difference between the original data set and the augmented data set is the following
+    - normalization
+    - translation
+    - scaled
+    - warped
+    - brightness adjusted
 
+![alt text][image5]
 
 ####2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
 
@@ -120,27 +130,30 @@ If a well known architecture was chosen:
 
 Here are five German traffic signs that I found on the web:
 
-![alt text][image4] 
+![alt text][image6] 
 
 
-The first image might be difficult to classify because ...
+The first and third images might be difficult to classify because it is very hard to determine what the sign is a image off due to poor quality of the original image.
 
 ####2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
 Here are the results of the prediction:
 
-| Image			        |     Prediction	        					| 
-|:---------------------:|:---------------------------------------------:| 
-| Stop Sign      		| Stop sign   									| 
-| U-turn     			| U-turn 										|
-| Yield					| Yield											|
-| 100 km/h	      		| Bumpy Road					 				|
-| Slippery Road			| Slippery Road      							|
+| Image                         |     Prediction	        					| 
+|:-----------------------------:|:---------------------------------------------:| 
+| Bumpy Road     		        | Bumpy Road  									| 
+| Road Work    			        | Road Work 									|
+| Dangerous Curve To The Right  | Dangerous Curve To The Right					|
+| 30 km/h                       | 30 km/h                   					|
+| Yield					        | Yield											|
+| Turn Right Ahead		        | Turn Right Ahead								|
+| Keep Right      		        | Keep Right					 				|
+| 100 km/h			            | 100 km/h      				    			|
 
 
-The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
+The model was able to correctly guess 5 of the 5 traffic signs, which gives an accuracy of 100%. This compares favorably to the accuracy on the test set of 94%
 
-![alt text][image5] 
+![alt text][image7] 
 
 ####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
@@ -148,13 +161,7 @@ The code for making predictions on my final model is located in the 11th cell of
 
 For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
 
-| Probability         	|     Prediction	        					| 
-|:---------------------:|:---------------------------------------------:| 
-| .60         			| Stop sign   									| 
-| .20     				| U-turn 										|
-| .05					| Yield											|
-| .04	      			| Bumpy Road					 				|
-| .01				    | Slippery Road      							|
+![alt text][image8] 
 
 
 For the second image ... 
