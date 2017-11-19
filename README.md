@@ -24,7 +24,7 @@ The goals / steps of this project are the following:
 [image5]: ./examples/augmented_result.png "Augmented Data Sample"
 [image6]: ./examples/traffic_signs.png "Downloaded Traffic Signs"
 [image7]: ./examples/predictions.png "Network Predictions"
-[image7]: ./examples/probability.png "Probabilities"
+[image8]: ./examples/probability.png "Probabilities"
 
 ## Rubric Points
 ###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
@@ -89,13 +89,18 @@ My final model consisted of the following layers:
 | Layer         		|     Description	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | Input         		| 32x32x3 RGB image   							| 
-| Convolution 3x3     	| 1x1 stride, same padding, outputs 32x32x64 	|
+| Convolution 3x3     	| 1x1 stride, same padding, outputs 28x28x48 	|
 | RELU					|												|
-| Max pooling	      	| 2x2 stride,  outputs 16x16x64 				|
-| Convolution 3x3	    | etc.      									|
-| Fully connected		| etc.        									|
-| Softmax				| etc.        									|
-|						|												|
+| Max pooling	      	| 2x2 stride,  outputs 14x14x48 				|
+| Convolution 3x3	    | 1x1 stride, same padding, outputs 10x10x96 	|
+| RELU          		|          									    |
+| Max pooling	      	| 2x2 stride,  outputs 5x5x96    				|
+| Convolution 3x3	    | 1x1 stride, same padding, outputs 3x3x172 	|
+| RELU          		|          									    |
+| Max pooling	      	| 1x1 stride,  outputs 2x2x172    				|
+| Flatten				| 688        									|
+| Fully Connected		| 84           									|
+| Fully Connected		| 43											|
 |						|												|
  
 
@@ -162,11 +167,5 @@ The code for making predictions on my final model is located in the 11th cell of
 For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
 
 ![alt text][image8] 
-
-
-For the second image ... 
-
-### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
-####1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
 
 
