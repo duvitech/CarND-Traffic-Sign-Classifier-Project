@@ -32,7 +32,8 @@ The goals / steps of this project are the following:
 ---
 ### Writeup / README
 
-My Python project notebook is located here [project code](https://github.com/duvitech/CarND-Traffic-Sign-Classifier-Project.git/Traffic_Sign_Classifier.ipynb)
+My GIT Repo is located here [project repo](https://github.com/duvitech/CarND-Traffic-Sign-Classifier-Project)
+My Python project notebook is located here [project code](https://github.com/duvitech/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb)
 
 ### Data Set Summary & Exploration
 
@@ -69,7 +70,16 @@ Here is a visualization of a sample set of a traffic signs after grayscaling.
 
 ![alt text][image3]
 
-As a last step, I normalized the image data because and created functions for augmenting and enhancing the images for better results.
+As a last step, I normalized the image data. 
+
+Converting the image from RGB to a grayscale image or other type of color-transformed image makes
+it easier for the algorithm to detect specific features/details, or patterns in the original image.
+
+Normalizing the image ensures that each pixel has a similar data distribtion.  This makes convergence 
+faster while training teh netowrk.
+
+This pre-processing of the images allows for the neural network to classify and recognize the original
+RGB image in more detail.
 
 ![alt text][image4]
 
@@ -82,6 +92,7 @@ The difference between the original data set and the augmented data set is the f
 
 ![alt text][image5]
 
+
 #### 2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
 
 My final model consisted of the following layers:
@@ -89,37 +100,42 @@ My final model consisted of the following layers:
 | Layer         		|     Description	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | Input         		| 32x32x3 RGB image   							| 
-| Convolution 3x3     	| 1x1 stride, same padding, outputs 28x28x48 	|
+| Convolution 5x5     	| 1x1 stride, same padding, outputs 28x28x48 	|
 | RELU					|												|
 | Max pooling	      	| 2x2 stride,  outputs 14x14x48 				|
-| Convolution 3x3	    | 1x1 stride, same padding, outputs 10x10x96 	|
+| Convolution 5x5	    | 1x1 stride, same padding, outputs 10x10x96 	|
 | RELU          		|          									    |
 | Max pooling	      	| 2x2 stride,  outputs 5x5x96    				|
 | Convolution 3x3	    | 1x1 stride, same padding, outputs 3x3x172 	|
 | RELU          		|          									    |
 | Max pooling	      	| 1x1 stride,  outputs 2x2x172    				|
 | Flatten				| 688        									|
-| Fully Connected		| 84           									|
-| Fully Connected		| 43											|
+| Fully Connected		| input 688, output 84							|
+| Fully Connected		| input 84, output 43							|
 |						|												|
  
 
 
 #### 3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
-To train the model, I used a 128 image batch size and 22 epochs.  My sigma was set to 0.1 and learn rate was set to 0.001.
+To train the model, I used a 128 image batch size and 30 epochs.  My sigma was set to 0.01 and learn rate was set to 0.001.
 
 #### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
 My final model results were:
-* training set accuracy of ?
-* validation set accuracy of ? 
-* test set accuracy of ?
+training set accuracy of 93.0%
+validation set accuracy of 97.5% 
+test set accuracy of 87.5%
 
 If an iterative approach was chosen:
 * What was the first architecture that was tried and why was it chosen?
+I started with the LeNet Training pipeline from the lessons, this was chosen, since it was the network I already had up and running and only required slight modifications to work for the traffic sign clasificaiton problem.  I had to change the input color depth to 3 for the RGB images and ouput 43 classes.  
+
 * What were some problems with the initial architecture?
+I increased the epochs and determined that the network may be overfitting since the accuracy was in the low 90% and the test accuracy was close to 100%.  
+
 * How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
+
 * Which parameters were tuned? How were they adjusted and why?
 * What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
 
