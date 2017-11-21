@@ -99,15 +99,18 @@ My final model consisted of the following layers:
 
 | Layer         		|     Description	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| Input         		| 32x32x3 RGB image   							| 
+| Input         		| 32x32x1 Grayscale image 						| 
 | Convolution 5x5     	| 1x1 stride, same padding, outputs 28x28x48 	|
 | RELU					|												|
+| Dropout				|												|
 | Max pooling	      	| 2x2 stride,  outputs 14x14x48 				|
 | Convolution 5x5	    | 1x1 stride, same padding, outputs 10x10x96 	|
 | RELU          		|          									    |
+| Dropout				|												|
 | Max pooling	      	| 2x2 stride,  outputs 5x5x96    				|
 | Convolution 3x3	    | 1x1 stride, same padding, outputs 3x3x172 	|
 | RELU          		|          									    |
+| Dropout				|												|
 | Max pooling	      	| 1x1 stride,  outputs 2x2x172    				|
 | Flatten				| 688        									|
 | Fully Connected		| input 688, output 84							|
@@ -118,14 +121,13 @@ My final model consisted of the following layers:
 
 #### 3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
-To train the model, I used a 128 image batch size and 30 epochs.  My sigma was set to 0.01 and learn rate was set to 0.001.
+To train the model, I used a 128 image batch size and 25 epochs.  My sigma was set to 0.1 and learn rate was set to 0.001.
 
 #### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
 My final model results were:
-training set accuracy of 93.0%
-validation set accuracy of 97.5% 
-test set accuracy of 87.5%
+validation set accuracy of 99.7% 
+test set accuracy of 95.6%
 
 If an iterative approach was chosen:
 * What was the first architecture that was tried and why was it chosen?
@@ -136,20 +138,27 @@ I increased the epochs and determined that the network may be overfitting since 
 
 * How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
 
+I changed the image batch size previously and the number of epochs while running the default network and the network that I created without dropout.  I added for my final solution 3 convolution layers with the rectifier activation function including pooling and dropout.  I also have a flattening layer and then finally two cully connected layers prior to the 43 class output.
+
 * Which parameters were tuned? How were they adjusted and why?
+I did change sigma, rate, epochs and batch size to test what modifications did for my results.  
+
 * What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
 
 If a well known architecture was chosen:
 * What architecture was chosen?
 * Why did you believe it would be relevant to the traffic sign application?
+I used teh LeNet architecture which was relevant to this solution since the architecture performed very well when used in character recognition.  With modification of the traffic sign data (mainly grayscale and normalization)  this problem ends up being very similar to the character recognition problem and was the resent for me staying with the LeNet architecture.
+
 * How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
+Both Validation and test accuracy now indicate that we are not underfitting or overfitting.
  
 
 ### Test a Model on New Images
 
 #### 1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
 
-Here are five German traffic signs that I found on the web:
+Here are 8 German traffic signs that I found on the web:
 
 ![alt text][image6] 
 
@@ -164,23 +173,24 @@ Here are the results of the prediction:
 |:-----------------------------:|:---------------------------------------------:| 
 | Bumpy Road     		        | Bumpy Road  									| 
 | Road Work    			        | Road Work 									|
-| Slippery road                 | Wild Animal Crossing					|
+| Slippery road                 | Slippery road		                			|
 | 30 km/h                       | 30 km/h                   					|
 | Yield					        | Yield											|
 | Turn Right Ahead		        | Turn Right Ahead								|
 | Keep Right      		        | Keep Right					 				|
-| 100 km/h			            | 100 km/h      				    			|
+| 100 km/h			            | 50 km/h      				    			    |
 
 
-The model was able to correctly guess 5 of the 5 traffic signs, which gives an accuracy of 87.5%. This compares less than favorably to the accuracy on the test set of 96.1%
+The model was able to correctly guess 7 of the 8 traffic signs, which gives an accuracy of 87.5%. This compares less than favorably to the accuracy on the test set of 95.6%. 
 
 ![alt text][image7] 
 
 #### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
-The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
 
-For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
+For the first image, the model is sure that this is a Bumpy Road sign (probability of 1.0), and the image does contain a bumpy road sign. I was surprised that the model figured out slippery road, since that one was by far the hardest image to recognize due to the quality, angle and not a lot of contrast between the sign and the background.  I was also suprised that the model did not recognize the 100 km/h sign, i think modification to my training set with rotated images may solve that problem.
+
+The top 8 soft max probabilities were
 
 ![alt text][image8] 
 
